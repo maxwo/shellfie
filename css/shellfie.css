@@ -1,0 +1,29 @@
+html, body {
+	background-color: black;
+	color: white;
+
+	height:100%;
+	min-height:100%;
+}
+
+#shell, #shell pre {
+  border: none;
+  background-color: black;
+  color: white;
+}
+
+#shell pre {
+  margin: 0 auto;
+  font-family: "Courier New", Courier, monospace;
+  line-height: 1em;
+  font-size: 0.95em;
+  width: 50em;
+}
+
+#shell, #parameters {
+	height: 100%;
+}
+
+#parameters {
+	background-color: white;
+}
