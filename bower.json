@@ -1,0 +1,25 @@
+{
+  "name": "shellfie",
+  "description": "",
+  "main": "shellfie.js",
+  "authors": [
+    "Maxime Wojtczak"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "selfie",
+    "shell",
+    "shellfie"
+  ],
+  "homepage": "https://github.com/maxwo/shellfie",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}
