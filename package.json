@@ -1,25 +1,28 @@
 {
   "name": "shellfie",
-  "version": "0.0.1",
-  "description": "",
-  "main": "shellfie.js",
+  "version": "0.1.0",
+  "description": "A shellfie creator, to illustrate use of node streams thanks to Browserify.",
+  "main": "js/shellfie.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "/bin/true",
+    "build": "grunt && bower install"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/maxwo/shellfie.git"
+  },
+  "author": "Maxime Wojtczak",
   "license": "MIT",
   "devDependencies": {
-    "browserify": "^4.1.5",
-    "grunt": "^0.4.5",
-    "grunt-bower-install": "~1.4.1",
-    "grunt-browserify": "^2.1.0",
-    "grunt-connect-proxy": "~0.1.10",
-    "grunt-contrib-connect": "~0.7.1",
-    "grunt-contrib-less": "^0.11.1",
-    "grunt-contrib-watch": "~0.6.1"
-  },
-  "dependencies": {
-    "jquery": "^2.1.1",
-    "underscore": "^1.6.0"
+    "browserify": "^14.3.0",
+    "grunt": "^1.0.1",
+    "grunt-bower-install": "~1.6.0",
+    "grunt-browserify": "^5.0.0",
+    "grunt-connect-proxy": "~0.2.0",
+    "grunt-contrib-connect": "~1.0.2",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-less": "^1.4.1",
+    "grunt-contrib-uglify": "^2.3.0",
+    "grunt-contrib-watch": "~1.0.0"
   }
 }

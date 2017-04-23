@@ -424,7 +424,7 @@ exports.TagWriter = TagWriter;
 exports.CanvasWriter = CanvasWriter;
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":5,"stream":25,"underscore":26,"util":28}],2:[function(require,module,exports){
+},{"buffer":5,"stream":25,"underscore":26,"util":29}],2:[function(require,module,exports){
 var $ = require('jquery');
 var capture = require('./capture.js');
 
@@ -15862,13 +15862,15 @@ Stream.prototype.pipe = function(dest, options) {
 }.call(this));
 
 },{}],27:[function(require,module,exports){
+module.exports=require(9)
+},{}],28:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -16458,4 +16460,4 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,require("g5I+bs"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":27,"g5I+bs":13,"inherits":9}]},{},[2]);
+},{"./support/isBuffer":28,"g5I+bs":13,"inherits":27}]},{},[2]);
