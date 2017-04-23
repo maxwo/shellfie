@@ -13,6 +13,7 @@ services:
 
 before_script:
   - npm install -g grunt
+  - npm install -g bower
   - npm run build
 
 after_success:
