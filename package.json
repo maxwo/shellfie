@@ -25,6 +25,7 @@
     "grunt-contrib-watch": "~1.0.0"
   },
   "dependencies": {
-    "jquery": "^3.2.1"
+    "jquery": "^3.2.1",
+    "underscore": "^1.8.3"
   }
 }
