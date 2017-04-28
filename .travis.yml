@@ -15,7 +15,7 @@ before_script:
   - npm run build
 
 after_success:
-  - docker login -u $($TRAVIS_REPO_SLUG | sed 's#\/.*##') -p $DOCKER_PASSWORD
+  - docker login -u $(echo $TRAVIS_REPO_SLUG | sed 's#\/.*##') -p $DOCKER_PASSWORD
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
   - docker build -t $TRAVIS_REPO_SLUG:$TRAVIS_COMMIT .
   - docker tag $TRAVIS_REPO_SLUG:$TRAVIS_COMMIT $REPO:$TAG
