@@ -16,11 +16,11 @@ before_script:
 after_success:
   - export DOCKER_REPOSITORY=$TRAVIS_REPO_SLUG
   - export DOCKER_USERNAME=$(echo $TRAVIS_REPO_SLUG | sed 's#\/.*##')
+  - export DOCKER_TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
   - docker build -t $DOCKER_REPOSITORY:$TRAVIS_COMMIT .
-  - docker tag $DOCKER_REPOSITORY:$TRAVIS_COMMIT $DOCKER_REPOSITORY:$TAG
-  - docker push $TRAVIS_REPO_SLUG
+  - docker tag $DOCKER_REPOSITORY:$TRAVIS_COMMIT $DOCKER_REPOSITORY:$DOCKER_TAG
+  - docker push $DOCKER_REPOSITORY
 
 deploy:
   provider: pages
