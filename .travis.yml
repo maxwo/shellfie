@@ -3,8 +3,6 @@ node_js:
   - "7"
 env:
   global:
-    - REPO: maxwoj/shellfie
-    - DOCKER_USERNAME: maxwoj
     - secure: "HYr+3GHtOXYmfzuuH75FJIWCt+iqhVs35UcLEKxsfkDdem+hw6V48P2+X/l7jweaE4iaZ87llJ/3+ftUtjzez6kh001HbRfOtRYI6L25na4EPgzgApn4aLAQuWq+5c6Nid8ZYRI1wTc+vukuWt7GmfCxKhV0GrB5hLxBFI+mpHhNOwrBTOexWw0Zh1OdqFS8RYu3+GAgPgNDhKh7P+WnphmyzV1GyXPa4WM947CGksivIb4NXxaQ13/jByvqrrLKcqw2BuloaWy7RaYSsmOcQdHF7Ah5RTC+3RI4OcrhPfC91fbtqwGgKJ1zdqibv+mILpu/gik/4vfuSqHAhjwx5OnY6s6h7Pq5T5JxNXjh+LwejQ5D1R5jpQxejx3yukybSakmITRW4L7C0VI4qcw8dN1cEZ9rL+9bSOd8Diur79jlj9rXb8xCBVtMTgvC+Dx7+GNLP0m8rmdnXFS12IyBL+wVbGlJUeVCg6hL8uPF4Ut91nYQUKyKcPwEQs4I29GGZ1jpSQEaG9cJ3lybdCMdYjlowaw3nmu2CMthJ3gh5gns3pZydrv2YZtpOipyuKKn4Ayrmgq0xQEKQn8uB9JmBTcs69D9OBmIU5IerWfTHBCGc1+FJUmM+AumVX4cb/gRDT8+9rlD8nfTDNRpIW/dxlTRt15h6KqgB2bE6Sm1AKk="
     - secure: "jk2IQ16aIO3kGr4MGzdxka27jhYLkUcZhKwEEo6KHAzy7+w+kC7UzqlkqwN1oDCgEb3w3tEBUMJZzWjKcov0hmDhRCZXH5rsl5uWg4eWU+9G+8tMrAKXue3AcRcqut1JfM3AUAamTB/uQvCZJ9aKurgt8K8LyAZN9gUPJd+CYA/KPGDfdjTGXFSUISR0makpRLRFIsR7oi6u6/1oQbP1yEmxMDN/3Pz7PysZnDxa89FGbH4x1YuL8OfrQlgs+N98shmeQf+ajnLsEkkKwkJJ85Ct/65k7n6bmyLTVUe+lyjzjVOskNceIbUdn1KtFWH7I9LhIG6vTAi9puqxFTKbi5DxiLZmz279pciNku1dYWIDQ53DRIekNZUr6+Zte+X0A2Kh/hi1TQ6Ft5XTuvzzQXpmeixolmcqC9zxSUXmCaCyYJJ8+xZvqK1TKrCqSh/Uv1tdX4Z1EsaqI4HIsD9HcvwbSR8DmhJswGiZJYyTNeILSspttP9kG4LOtPBbWd7kEBLoiekevwZTBDfUKfgcADBpVq73xQ6pYLUnuyoc2uROfj22wxpdqe4Es0ZX4wLa5YCheNukL5WFRbq4cvIDC/17iD+UxkaamCidGCp4Vu4IYfTtTka1bxg/t9SpEXJaOPwIT5Vg/Em5TgndylC+H0fRp9WHTiqkOhnrVb/HZOU="
 
@@ -17,11 +15,11 @@ before_script:
   - npm run build
 
 after_success:
-  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+  - docker login -u $($TRAVIS_REPO_SLUG | sed 's#\/.*##') -p $DOCKER_PASSWORD
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
-  - docker build -t $REPO:$TRAVIS_COMMIT .
-  - docker tag $REPO:$TRAVIS_COMMIT $REPO:$TAG
-  - docker push $REPO
+  - docker build -t $TRAVIS_REPO_SLUG:$TRAVIS_COMMIT .
+  - docker tag $TRAVIS_REPO_SLUG:$TRAVIS_COMMIT $REPO:$TAG
+  - docker push $TRAVIS_REPO_SLUG
 
 deploy:
   provider: pages
