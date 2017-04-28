@@ -10,15 +10,16 @@ services:
   - docker
 
 before_script:
-  - npm install -g grunt
-  - npm install -g bower
+  - npm install -g grunt bower
   - npm run build
 
 after_success:
-  - docker login -u $(echo $TRAVIS_REPO_SLUG | sed 's#\/.*##') -p $DOCKER_PASSWORD
+  - export DOCKER_REPOSITORY=$TRAVIS_REPO_SLUG
+  - export DOCKER_USERNAME=$(echo $TRAVIS_REPO_SLUG | sed 's#\/.*##')
+  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
-  - docker build -t $TRAVIS_REPO_SLUG:$TRAVIS_COMMIT .
-  - docker tag $TRAVIS_REPO_SLUG:$TRAVIS_COMMIT $REPO:$TAG
+  - docker build -t $DOCKER_REPOSITORY:$TRAVIS_COMMIT .
+  - docker tag $DOCKER_REPOSITORY:$TRAVIS_COMMIT $DOCKER_REPOSITORY:$TAG
   - docker push $TRAVIS_REPO_SLUG
 
 deploy:

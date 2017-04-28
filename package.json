@@ -5,7 +5,7 @@
   "main": "js/shellfie.js",
   "scripts": {
     "test": "/bin/true",
-    "build": "grunt && bower install"
+    "build": "bower install && grunt"
   },
   "repository": {
     "type": "git",
