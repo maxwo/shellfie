@@ -15,7 +15,7 @@ before_script:
 
 after_success:
   - export DOCKER_REPOSITORY=$TRAVIS_REPO_SLUG
-  - export DOCKER_USERNAME=$(echo $TRAVIS_REPO_SLUG | sed 's#\/.*##')
+  - export DOCKER_USERNAME=$(echo $DOCKER_REPOSITORY | sed 's#\/.*##')
   - export DOCKER_TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
   - docker build -t $DOCKER_REPOSITORY:$TRAVIS_COMMIT .

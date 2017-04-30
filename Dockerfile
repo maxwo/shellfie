@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM nginx:1
 
 MAINTAINER Maxime Wojtczak <maxime.wojtczak@zenika.com>
 
