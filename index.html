@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" type="text/css" href="css/shellfie.css" />
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <script type="text/javascript" src="shellfie.min.js"></script>
+  </head>
+
+  <body>
+    <div id="shell" class="col-md-8">
+      <pre>
+      </pre>
+      <pre>you@shellfie ~ $</pre>
+    </div>
+
+    <div id="parameters" class="col-md-4">
+
+      <h1>
+        Shellfie
+      </h1>
+
+      <div>
+        <button class="btn btn-primary">
+          Start capture
+        </button>
+        or <strong>drop a file</strong> from your computer to this page.
+      </div>
+
+      <h2>Parameters</h2>
+
+      <div id="contrast" class="parameters">
+        <h3>
+          <input type="checkbox" name="enabled" checked="checked" />
+          Contrast
+        </h3>
+        <label>Strength</label>
+        <input type="range" name="strength" min="0" max="100" value="50" />
+        <label>Level</label>
+        <input type="range" name="turningPointX" min="0" max="100" value="50" />
+        <label>Amount</label>
+        <input type="range" name="turningPointY" min="0" max="100" value="50" />
+      </div>
+
+      <div id="luminosity" class="parameters">
+        <h3>
+          <input type="checkbox" name="enabled" checked="checked" />
+          Brightness
+        </h3>
+        <label>Brightness</label>
+        <input type="range" name="amount" min="-255" max="255" value="10" />
+      </div>
+
+      <div id="highContrast" class="parameters">
+        <h3>
+          <input type="checkbox" name="enabled" />
+          High contrast
+        </h3>
+        <label>Bias</label>
+        <input type="range" name="bias" min="0" max="255" value="128" />
+      </div>
+
+      <div id="invert" class="parameters">
+        <h3>
+          <input type="checkbox" name="enabled" checked="checked" />
+          Inversion
+        </h3>
+      </div>
+
+    </div>
+
+  </body>
+
+</html>
